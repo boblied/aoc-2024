@@ -1,1 +1,9 @@
 https://adventofcode.com/2024/day/5
+
+Use DFS to implement topological sort. The input is not a DAG --
+but the example is -- so we can't do a complete ordering over all
+the input. However, the fine print says we can ignore pages that
+aren't part of the order, so we *can* sort the pages we need.
+
+By the time all that is sorted out, part 2 reduces to a sorting
+problem, because we already know the relative placement of pages.
