@@ -79,14 +79,9 @@ sub isValidOrder($rule, $place, @validate)
     while ( $isValid && defined(my $next = shift @validate) )
     {
         $isValid &&= $place->{$first} <= $place->{$next};
-        if ( ! $isValid )
-        {
-            return false;
-        }
         $first = $next;
     }
-
-    return true;
+    return $isValid;
 }
 
 sub topoSort($page, $include, $rule, $visited, $stack, $depth)
