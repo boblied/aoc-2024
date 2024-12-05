@@ -46,6 +46,7 @@ for my ($i, $upd) ( indexed @update )
 
 # DFS for topological sort, but only works for DAG. Input is not DAG.
 
+# Returns a hash map of pages to their relative order
 sub findOrder($upd, $rule)
 {
     # Find the ordering only among the pages that are needed
@@ -62,6 +63,7 @@ sub findOrder($upd, $rule)
     @stack = reverse @stack;
     $logger->debug("SORT: [@stack]");
 
+    # Invert the sorted list to assign each page to its index
     my %place;
     for my ($i, $p) (indexed @stack)
     {
