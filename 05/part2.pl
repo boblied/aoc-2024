@@ -72,10 +72,8 @@ sub findOrder($upd, $rule)
     return \%place;
 }
 
-sub isValidOrder($rule, $place, @upd)
+sub isValidOrder($rule, $place, @validate)
 {
-    # Eat up a copy
-    my @validate = @upd;
     my $isValid = true;
     my $first = shift @validate;
     while ( $isValid && defined(my $next = shift @validate) )
