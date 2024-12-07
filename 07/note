@@ -1,1 +1,19 @@
 https://adventofcode.com/2024/day/7
+
+First guess is to use depth first search to explore possible results.
+
+Better thought is to work backwards.
+
+If the result is a multiple of the last number, then the last op
+must have been multiplication. Otherwise, it must have been addition.
+Undo that op (divide by last, or subtract last), and recurse with
+the next-to-last term.  If we get down to one term left, it has to
+be equal to the remaining goal number.
+
+Part 2: using the same backwards strategy, add the third possibility:
+remove the last term if it's a suffix of the goal.
+
+Bad moves: 1) DFS is over-complicated, never got it to work right.
+2) There are duplicate goal numbers in the input. Don't store them
+in a hash because that will cause them to be evaluated only once,
+and if two duplicates are valid, the sum will come up short.
