@@ -1,4 +1,26 @@
 https://adventofcode.com/2024/day/6
 
-Part 1: reuse AOC::Grid from library. Consider crossing paths already seen, including
-the '^' at the start.
+Part 1: reuse AOC::Grid from library. Consider crossing paths already
+seen, including the '^' at the start.
+
+Part 2: To create a block, the obstacle must be placed on the path.
+Make one pass to determine every cell that is visited. Then, for
+each cell, clone the map, set a block, and run the patrol until we
+hit a loop or exit.
+
+Thing that didn't work 1: walk the path but at each cell, check if
+a right turn would put us on a cell we've already seen, traveling
+in the correct direction. Flaw: a block could move us way off the
+original path, and have a loop there. Undercounts by a lot.
+
+Thing that didn't work 2: when we move a cell, fill the entire row
+or column (between blocks) and if we ever re-enter any cell in the
+same direction, detect a loop. Flaw: same as 1, but faster.
+
+Loop detection: record all the turns, position and turn. For example,
+([7,6], ">v"). It's a loop if we find ourselves turning the same
+way at the same cell.
+
+Loop detection. Failed attempt: for every cell, record the direction
+that we entered, and see if we are moving the same direction again.
+Not sure why it didn't work, lots of fiddly bookkeeping.
