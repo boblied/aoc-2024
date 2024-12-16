@@ -78,38 +78,6 @@ say "GPS Sum: $GPS";
 
 $logger->info("FINISH");
 
-sub pushRock($row)
-{
-    my $me = first_index { $_ eq '@' } $row->@*;
-    my $rock = first_index { $_ eq 'O' } $row->@[$me+1 .. $row->$#* ];
-    my $wall;
-    if ( $rock == -1 )
-    {
-        $wall = $me + 1 + first_index { $_ eq '#' } $row->@[$me+1 .. $row->$#* ];
-    }
-    else
-    {
-        my $nextRock = first_index { $_ eq 'O' } $row->@[$rock+1 .. $row->$#* ];
-    }
-
-    my $p = $wall - 1;
-    while ( $p > $me )
-    {
-        if    ( $row->[$p] eq 'O' )
-        {
-            $row->[--$wall] = $row->[$p];
-            $row->[$p] = '.' if $p < $wall;
-        }
-        $p--
-    }
-
-    # Last move is myself. In this order, in case nothing moved.
-    $row->[$me] = '.';
-    $row->[--$wall] = '@';
-
-    return $wall; # Ends up pointing at @
-}
-
 sub moveOne($row)
 {
     my $me = first_index { $_ eq '@' } $row->@*;
