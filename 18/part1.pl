@@ -26,6 +26,7 @@ while (<>)
 }
 
 $logger->info("T:$TimeLimit $Height x $Width, bytes=", scalar(@fallingByte));
+$logger->info("LAST: $fallingByte[$TimeLimit-1]->@*");
 
 my @Grid;
 for ( 0 .. $Height ) { push @Grid, [ ('.') x ($Width+1) ] }
