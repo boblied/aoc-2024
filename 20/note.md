@@ -14,3 +14,21 @@ every point on path
 give access to a point with a shorter finishing distance
 
 ## Part 2
+
+Using the same distance information, expand the diamond that's reachable
+around each point
+                    
+        c  c  c  c  c  c   c  c  c  c  c
+       -5 -4 -3 -2 -1     +1 +2 +3 +4 +5
+  r-5                  5
+  r-4               5  4  5
+  r-3            5  4  3  4  5
+  r-2         5  4  3  2  3  4  5
+  r-1      5  4  3  2  1  2  3  4  5 
+  r     5  4  3  2  1  0  1  2  3  4  5
+  r+1      5  4  3  2  1  2  3  4  5
+  r+2         5  4  3  2  3  4  5
+  r+3            5  4  3  4  5
+  r+4               5  4  5
+  r+5                  5
+Cheats are reversible, so a cheat from 
