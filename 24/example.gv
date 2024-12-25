@@ -1,0 +1,58 @@
+strict digraph s {
+
+ordering = "in";
+subgraph { ordering="in";
+rank=same; x00 -> y00 -> x01 -> y01 -> x02 -> y02 -> x03 -> y03 -> x04 -> y04 [style="invis"];
+    // x00 -> x01 -> x02 -> x03 -> x04 [ style="invis" ];
+};
+subgraph { ordering="in"; rank=same; z00; z01; z02; z03; z04; z05; z06 };
+
+
+node [ x00="x00: 1" ];
+node [ x01="x01: 0" ];
+node [ x02="x02: 1" ];
+node [ x03="x03: 1" ];
+node [ x04="x04: 0" ];
+node [ y00="y00: 1" ];
+node [ y01="y01: 1" ];
+node [ y02="y02: 1" ];
+node [ y03="y03: 1" ];
+node [ y04="y04: 1" ];
+
+{ ntg ; fgs; } -> mjb;
+{ y02 ; x01; } -> tnw;
+{ kwq ; kpj; } -> z05;
+{ x00 ; x03; } -> fst;
+{ tgd ; rvg; } -> z01;
+{ vdt ; tnw; } -> bfw;
+{ bfw ; frj; } -> z10;
+{ ffh ; nrd; } -> bqk;
+{ y00 ; y03; } -> djm;
+{ y03 ; y00; } -> psh;
+{ bqk ; frj; } -> z08;
+{ tnw ; fst; } -> frj;
+{ gnj ; tgd; } -> z11;
+{ bfw ; mjb; } -> z00;
+{ x03 ; x00; } -> vdt;
+{ gnj ; wpb; } -> z02;
+{ x04 ; y00; } -> kjc;
+{ djm ; pbm; } -> qhw;
+{ nrd ; vdt; } -> hwm;
+{ kjc ; fst; } -> rvg;
+{ y04 ; y02; } -> fgs;
+{ y01 ; x02; } -> pbm;
+{ ntg ; kjc; } -> kwq;
+{ psh ; fgs; } -> tgd;
+{ qhw ; tgd; } -> z09;
+{ pbm ; djm; } -> kpj;
+{ x03 ; y03; } -> ffh;
+{ x00 ; y04; } -> ntg;
+{ bfw ; bqk; } -> z06;
+{ nrd ; fgs; } -> wpb;
+{ frj ; qhw; } -> z04;
+{ bqk ; frj; } -> z07;
+{ y03 ; x01; } -> nrd;
+{ hwm ; bqk; } -> z03;
+{ tgd ; rvg; } -> z12;
+{ tnw ; pbm; } -> gnj;
+}
