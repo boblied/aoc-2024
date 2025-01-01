@@ -134,7 +134,7 @@ sub moveOne($row)
 
     # Must be a box there. Find the end of the boxes.
     my $rock = $me + 1;
-    $rock++ while ( $row->[$rock] eq '[' | $row->[$rock] eq ']' );
+    $rock++ while ( $row->[$rock] eq '[' || $row->[$rock] eq ']' );
     if ( $row->[$rock] ne '.' )
     {
         # Blocked, can't move
@@ -178,7 +178,11 @@ sub moveVertical($g, $meR, $meC, $dr) # dr = +1 or -1
         push @toBeMoved, [@$bx];
 
         if ( $adjoin[0] eq '#' || $adjoin[1] eq '#' ) # Blocked, nothing can move
-        {   return ($meR, $meC);
+        {
+            return ($meR, $meC);
+        }
+        elsif ( $adjoin[0] eq "." && $adjoin[1] eq "." ) # End of stack, can move
+        {
         }
 
         if ( $adjoin[0] eq "[" )   # Vertical stack, go on to next
@@ -193,16 +197,18 @@ sub moveVertical($g, $meR, $meC, $dr) # dr = +1 or -1
         {
             push @stack, [$br + $dr, $bl + 1];
         }
-        elsif ( $adjoin[0] eq "." && $adjoin[1] eq "." ) # End of stack, can move
-        {
-        }
     }
 
+    # A diamond shape in the boxes will stack the point of the
+    # diamond more than once, so look for that.
+    my %beenMoved;
     while ( my $bx = pop @toBeMoved )
     {
         my ($bxR, $bxC) = @$bx;
+        next if $beenMoved{"@$bx"};
         $g->set($bxR + $dr, $bxC, "["); $g->set($bxR + $dr, $bxC + 1, "]");
         $g->set($bxR      , $bxC, "."); $g->set($bxR      , $bxC + 1, ".");
+        $beenMoved{"@$bx"} = true;
     }
 
     $g->set($meR, $meC, ".");
