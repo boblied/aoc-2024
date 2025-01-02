@@ -31,4 +31,12 @@ around each point
   r+3            5  4  3  4  5
   r+4               5  4  5
   r+5                  5
-Cheats are reversible, so a cheat from 
+
+But that's an absurd number of checks -- a distance of 20 would have 761 cells
+in the diamond, and there would be massive overlap from one point on the path
+to the next.
+
+Alternatively: for each pair of points in the path, if the second is closer than
+the first and can be reached with a Manhattan distance of 20, it's a shortcut.
+There are about 9000 steps in the input path, so pairwise that's about 81,000,000
+comparisons. 
